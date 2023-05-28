@@ -33,9 +33,9 @@ export default function Home() {
           <div>
             <ul>
               <li>
-                ChatGPT, NodeJS, TypeScript, Postgres/Mongo/Redis/ElasticSearch,
-                Docker, AWS/Heroku, Haskell, and whatever else helps me get the
-                job done.
+                NodeJS, NextJS, React, TypeScript,
+                Postgres/Mongo/Redis/ElasticSearch, Docker, AWS/Heroku, ChatGPT,
+                Haskell, and whatever else gets the job done.
               </li>
             </ul>
           </div>
