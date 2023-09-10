@@ -71,7 +71,10 @@ export default function Home() {
           </div>
           <div>
             This site is built without using any UI/UX helpers. Check out{" "}
-            <a href="https://github.com/QuotableWater7/jtbowler.com">
+            <a
+              href="https://github.com/QuotableWater7/jtbowler.com"
+              style={{ color: "#008f11" }}
+            >
               the source
             </a>{" "}
             if you are bored!
