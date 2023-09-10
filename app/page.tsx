@@ -1,106 +1,7 @@
 "use client";
 import React, { useCallback, useState } from "react";
-import { Modal } from "./Modal";
-
-const FlexCol: React.FC<
-  React.PropsWithChildren<{ gap?: React.CSSProperties["gap"] }>
-> = ({ children, gap }) => {
-  return (
-    <Box display="flex" flexDirection="column" gap={gap}>
-      {children}
-    </Box>
-  );
-};
-
-const FlexRow: React.FC<
-  React.PropsWithChildren<{ gap?: React.CSSProperties["gap"] }>
-> = ({ children, gap }) => {
-  return (
-    <Box display="flex" flexDirection="row" gap={gap}>
-      {children}
-    </Box>
-  );
-};
-
-const Box: React.FC<{
-  br?: React.CSSProperties["borderRadius"];
-  border?: React.CSSProperties["border"];
-  children?: React.ReactNode;
-  display?: React.CSSProperties["display"];
-  flexDirection?: React.CSSProperties["flexDirection"];
-  p?: number;
-  bg?: React.CSSProperties["backgroundColor"];
-  gap?: React.CSSProperties["gap"];
-  hoverProps?: React.CSSProperties;
-  onClick?: () => void;
-}> = ({
-  br,
-  border,
-  children,
-  display,
-  flexDirection,
-  hoverProps,
-  onClick,
-  p,
-  bg,
-  gap,
-}) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  return (
-    <div
-      style={{
-        ...(p && { padding: `${p}rem` }),
-        ...(bg && { backgroundColor: bg }),
-        ...(gap && { gap: `${gap}rem` }),
-        ...(display && { display }),
-        ...(flexDirection && { flexDirection }),
-        ...(br && { borderRadius: `${br}px` }),
-        ...(border && { border }),
-        ...(hoverProps && isHovered && hoverProps),
-      }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      {...(onClick && { onClick })}
-    >
-      {children}
-    </div>
-  );
-};
-
-const Card: React.FC<React.PropsWithChildren<{ onClick?: () => void }>> = ({
-  children,
-  onClick,
-}) => {
-  return (
-    <Box
-      p={1}
-      bg="royalblue"
-      br={4}
-      border="2px solid #ccc"
-      hoverProps={{
-        borderColor: "#ffbc40",
-        cursor: "pointer",
-        backgroundColor: "#3399ff",
-      }}
-      {...(onClick && { onClick })}
-    >
-      {children}
-    </Box>
-  );
-};
-
-const useModalToggle = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleOff = useCallback(() => setIsOpen(false), [setIsOpen]);
-  const toggleOn = useCallback(() => setIsOpen(true), [setIsOpen]);
-
-  return {
-    isOpen,
-    toggleOff,
-    toggleOn,
-  };
-};
+import { FlexRow, FlexCol, Card, Modal } from "./src";
+import { useModalToggle } from "./src/hooks";
 
 export const LifecycleVisualizationModal: React.FC<
   React.PropsWithChildren<{ isOpen: boolean; onClose: () => void }>
@@ -114,7 +15,6 @@ export const LifecycleVisualizationModal: React.FC<
 
 export default function Home() {
   const lvModalToggle = useModalToggle();
-  console.log({ lvModalToggle });
 
   return (
     <main className="flex min-h-screen flex-col items-center p-24 gap-8">
