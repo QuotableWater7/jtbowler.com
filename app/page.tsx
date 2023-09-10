@@ -104,7 +104,11 @@ export default function Home() {
             <Card onClick={lvModalToggle.toggleOn}>
               Lifecycle Visualization
             </Card>
-            <a href="https://github.com/QuotableWater7/aoc2022/blob/main/11/main.hs">
+            <a
+              href="https://github.com/QuotableWater7/aoc2022/blob/main/11/main.hs"
+              target="_blank"
+              rel="noreferrer"
+            >
               <Card>Functional Programming</Card>
             </a>
           </FlexCol>
