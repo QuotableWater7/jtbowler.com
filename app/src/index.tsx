@@ -6,9 +6,12 @@ type FlexProps = Partial<
 
 export const FlexCol: React.FC<
   React.PropsWithChildren<
-    FlexProps & Partial<Pick<React.CSSProperties, "width" | "height">>
+    FlexProps &
+      Partial<Pick<React.CSSProperties, "width" | "height">> & {
+        padding?: number;
+      }
   >
-> = ({ children, gap, alignItems, justifyContent, height, width }) => {
+> = ({ children, gap, alignItems, justifyContent, height, width, p }) => {
   return (
     <Box
       alignItems={alignItems}
@@ -18,6 +21,7 @@ export const FlexCol: React.FC<
       height={height}
       gap={gap}
       width={width}
+      p={p}
     >
       {children}
     </Box>
@@ -26,9 +30,12 @@ export const FlexCol: React.FC<
 
 export const FlexRow: React.FC<
   React.PropsWithChildren<
-    FlexProps & Partial<Pick<React.CSSProperties, "width" | "height">>
+    FlexProps &
+      Partial<Pick<React.CSSProperties, "width" | "height">> & {
+        p?: number;
+      }
   >
-> = ({ alignItems, children, gap, justifyContent, height, width }) => {
+> = ({ alignItems, children, gap, justifyContent, height, width, p }) => {
   return (
     <Box
       alignItems={alignItems}
@@ -38,6 +45,7 @@ export const FlexRow: React.FC<
       height={height}
       justifyContent={justifyContent}
       width={width}
+      p={p}
     >
       {children}
     </Box>

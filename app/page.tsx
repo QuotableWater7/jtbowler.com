@@ -52,14 +52,8 @@ export default function Home() {
 
   return (
     <main>
-      <br />
-      <FlexCol
-        alignItems="center"
-        justifyContent="space-around"
-        height="100vh"
-        gap={5}
-      >
-        <FlexCol gap={1} width={800}>
+      <FlexCol alignItems="center" justifyContent="space-around" gap={5} p={2}>
+        <FlexCol gap={1} width={650}>
           <h1 className="text-4xl">👋 Welcome</h1>
           <FlexCol gap={1}>
             <div>
