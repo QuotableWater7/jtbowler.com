@@ -51,7 +51,7 @@ export default function Home() {
   const ddModalToggle = useModalToggle();
 
   return (
-    <main className="flex min-h-screen flex-col items-center p-24 gap-8">
+    <main className="flex flex-col items-center p-16 gap-4">
       <div className="max-w-xl flex flex-col gap-8">
         <h1 className="text-4xl">👋 Welcome</h1>
         <div className="flex flex-col gap-2">
