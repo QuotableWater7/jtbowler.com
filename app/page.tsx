@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 
 const FlexCol: React.FC<
   React.PropsWithChildren<{ gap?: React.CSSProperties["gap"] }>
@@ -22,13 +23,27 @@ const FlexRow: React.FC<
 
 const Box: React.FC<{
   br?: React.CSSProperties["borderRadius"];
+  border?: React.CSSProperties["border"];
   children?: React.ReactNode;
   display?: React.CSSProperties["display"];
   flexDirection?: React.CSSProperties["flexDirection"];
   p?: number;
   bg?: React.CSSProperties["backgroundColor"];
   gap?: React.CSSProperties["gap"];
-}> = ({ br, children, display, flexDirection, p, bg, gap }) => {
+  hoverProps?: React.CSSProperties;
+}> = ({
+  br,
+  border,
+  children,
+  display,
+  flexDirection,
+  hoverProps,
+  p,
+  bg,
+  gap,
+}) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div
       style={{
@@ -38,7 +53,11 @@ const Box: React.FC<{
         ...(display && { display }),
         ...(flexDirection && { flexDirection }),
         ...(br && { borderRadius: `${br}px` }),
+        ...(border && { border }),
+        ...(hoverProps && isHovered && hoverProps),
       }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {children}
     </div>
@@ -47,7 +66,17 @@ const Box: React.FC<{
 
 const Card: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
-    <Box p={1} bg="royalblue" br={4}>
+    <Box
+      p={1}
+      bg="royalblue"
+      br={4}
+      border="2px solid #ccc"
+      hoverProps={{
+        borderColor: "#ffbc40",
+        cursor: "pointer",
+        backgroundColor: "#3399ff",
+      }}
+    >
       {children}
     </Box>
   );
@@ -95,9 +124,9 @@ export default function Home() {
           <Card>Domain-Driven Design</Card>
         </FlexCol>
         <FlexCol gap={1}>
-          <Card>Invoice Matching</Card>
+          <Card>Lifecycle Visualizations</Card>
           <a href="https://github.com/QuotableWater7/aoc2022">
-            <Card>Advent of Code &apos;22</Card>
+            <Card>Functional Programming</Card>
           </a>
         </FlexCol>
       </FlexRow>
