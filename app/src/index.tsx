@@ -1,20 +1,44 @@
 import React, { useState } from "react";
 
+type FlexProps = Partial<
+  Pick<React.CSSProperties, "alignItems" | "gap" | "justifyContent">
+>;
+
 export const FlexCol: React.FC<
-  React.PropsWithChildren<{ gap?: React.CSSProperties["gap"] }>
-> = ({ children, gap }) => {
+  React.PropsWithChildren<
+    FlexProps & Partial<Pick<React.CSSProperties, "width" | "height">>
+  >
+> = ({ children, gap, alignItems, justifyContent, height, width }) => {
   return (
-    <Box display="flex" flexDirection="column" gap={gap}>
+    <Box
+      alignItems={alignItems}
+      display="flex"
+      flexDirection="column"
+      justifyContent={justifyContent}
+      height={height}
+      gap={gap}
+      width={width}
+    >
       {children}
     </Box>
   );
 };
 
 export const FlexRow: React.FC<
-  React.PropsWithChildren<{ gap?: React.CSSProperties["gap"] }>
-> = ({ children, gap }) => {
+  React.PropsWithChildren<
+    FlexProps & Partial<Pick<React.CSSProperties, "width" | "height">>
+  >
+> = ({ alignItems, children, gap, justifyContent, height, width }) => {
   return (
-    <Box display="flex" flexDirection="row" gap={gap}>
+    <Box
+      alignItems={alignItems}
+      display="flex"
+      flexDirection="row"
+      gap={gap}
+      height={height}
+      justifyContent={justifyContent}
+      width={width}
+    >
       {children}
     </Box>
   );
@@ -24,14 +48,18 @@ export const Box: React.FC<
   Partial<
     Pick<
       React.CSSProperties,
+      | "alignItems"
       | "border"
       | "boxShadow"
       | "color"
       | "flexDirection"
       | "display"
+      | "height"
       | "gap"
       | "margin"
       | "width"
+      | "alignItems"
+      | "justifyContent"
     >
   > & {
     br?: React.CSSProperties["borderRadius"];
@@ -42,6 +70,7 @@ export const Box: React.FC<
     onClick?: (...args: any) => any;
   }
 > = ({
+  alignItems,
   br,
   border,
   boxShadow,
@@ -49,6 +78,7 @@ export const Box: React.FC<
   children,
   display,
   flexDirection,
+  height,
   hoverProps,
   margin,
   onClick,
@@ -68,9 +98,11 @@ export const Box: React.FC<
         ...(display && { display }),
         ...(flexDirection && { flexDirection }),
         ...(br && { borderRadius: `${br}px` }),
+        ...(alignItems && { alignItems }),
         ...(border && { border }),
         ...(boxShadow && { boxShadow }),
         ...(color && { color }),
+        ...(height && { height }),
         ...(margin && { margin }),
         ...(width && { width }),
         ...(hoverProps && isHovered && hoverProps),
