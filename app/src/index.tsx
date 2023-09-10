@@ -8,7 +8,7 @@ export const FlexCol: React.FC<
   React.PropsWithChildren<
     FlexProps &
       Partial<Pick<React.CSSProperties, "width" | "height">> & {
-        padding?: number;
+        p?: number;
       }
   >
 > = ({ children, gap, alignItems, justifyContent, height, width, p }) => {
