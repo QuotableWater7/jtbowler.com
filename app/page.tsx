@@ -23,10 +23,9 @@ export default function Home() {
         <div className="flex flex-col gap-2">
           <div>
             I&apos;ve worked at startups over my career because I love building
-            new products from the ground up. I care deeply about finding the
-            simple but excellent solutions to problems. I also love finding ways
-            to boost the productivity of the engineering team and scale
-            processes as organizations grow.
+            new products from the ground up. I care deeply about providing
+            excellent solutions to problems. I also love finding hacks to boost
+            the productivity of the engineering team.
           </div>
           <div>
             I am a lifelong learner and have skills in a wide variety of
