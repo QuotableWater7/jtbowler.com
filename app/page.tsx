@@ -14,9 +14,11 @@ const LifecycleVisualizationModal: React.FC<
       <FlexCol gap={1}>
         <p>
           <strong>Lifecycle Visualization</strong>
-          <br />I built out this diagram to unify a concept spanning several
-          disjoint pages within our application. This feature saw high adoption
-          within just hours of release.
+          <p>
+            I built out this diagram to unify a concept spanning several
+            disjoint pages within our application. This feature saw high
+            adoption within just hours of release.
+          </p>
         </p>
         <p>
           <Image src={lifecycle} alt="Lifecycle" />
@@ -26,8 +28,27 @@ const LifecycleVisualizationModal: React.FC<
   );
 };
 
+const DatadogDashboardsModal: React.FC<
+  React.PropsWithChildren<{ isOpen: boolean; onClose: () => void }>
+> = ({ isOpen, onClose }) => {
+  return (
+    <Modal isOpen={isOpen} onClose={onClose}>
+      <FlexCol gap={1}>
+        <strong>Datadog Dashboards</strong>
+        <p>
+          I have instrumeted our server logs to provide granular details about
+          our requests coming in. This gives us the ability to detect
+          performance issues from a wide variety of symptoms: large payloads,
+          long response times, or frequency of calls by operation and user/org.
+        </p>
+      </FlexCol>
+    </Modal>
+  );
+};
+
 export default function Home() {
   const lvModalToggle = useModalToggle();
+  const ddModalToggle = useModalToggle();
 
   return (
     <main className="flex min-h-screen flex-col items-center p-24 gap-8">
@@ -72,7 +93,7 @@ export default function Home() {
       <div></div>
       <FlexRow gap={1}>
         <FlexCol gap={1}>
-          <Card>Datadog Dashboards</Card>
+          <Card onClick={ddModalToggle.toggleOn}>Datadog Dashboards</Card>
           <Card>Domain-Driven Design</Card>
         </FlexCol>
         <FlexCol gap={1}>
@@ -85,6 +106,10 @@ export default function Home() {
       <LifecycleVisualizationModal
         isOpen={lvModalToggle.isOpen}
         onClose={lvModalToggle.toggleOff}
+      />
+      <DatadogDashboardsModal
+        isOpen={ddModalToggle.isOpen}
+        onClose={ddModalToggle.toggleOff}
       />
     </main>
   );
