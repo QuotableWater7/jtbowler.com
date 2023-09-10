@@ -6,17 +6,17 @@ import { useModalToggle } from "./src/hooks";
 import lifecycle from "./static/lifecycle.gif";
 import Image from "next/image";
 
-export const LifecycleVisualizationModal: React.FC<
+const LifecycleVisualizationModal: React.FC<
   React.PropsWithChildren<{ isOpen: boolean; onClose: () => void }>
 > = ({ isOpen, onClose }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
       <FlexCol gap={1}>
         <p>
-          <strong>Summary</strong>
-          <br />I built out this diagram that shows the lifecycle of a purchase
-          order. This unified several disjoint pages within our application and
-          saw high adoption within just hours of release.
+          <strong>Lifecycle Visualization</strong>
+          <br />I built out this diagram to unify a concept spanning several
+          disjoint pages within our application. This feature saw high adoption
+          within just hours of release.
         </p>
         <p>
           <Image src={lifecycle} alt="Lifecycle" />
@@ -47,6 +47,13 @@ export default function Home() {
             top 2-3% in multiple games like Overwatch and Rocket League. If
             I&apos;m not coding, I&apos;m trying to get better at{" "}
             <i>something</i>.
+          </div>
+          <div>
+            This site is built without using any UI/UX helpers. Check out{" "}
+            <a href="https://github.com/QuotableWater7/jtbowler.com">
+              the source
+            </a>{" "}
+            if you are bored!
           </div>
         </div>
         <div className="flex flex-col gap-2">
