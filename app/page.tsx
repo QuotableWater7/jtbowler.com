@@ -1,5 +1,6 @@
 "use client";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
+import { Modal } from "./Modal";
 
 const FlexCol: React.FC<
   React.PropsWithChildren<{ gap?: React.CSSProperties["gap"] }>
@@ -31,6 +32,7 @@ const Box: React.FC<{
   bg?: React.CSSProperties["backgroundColor"];
   gap?: React.CSSProperties["gap"];
   hoverProps?: React.CSSProperties;
+  onClick?: () => void;
 }> = ({
   br,
   border,
@@ -38,6 +40,7 @@ const Box: React.FC<{
   display,
   flexDirection,
   hoverProps,
+  onClick,
   p,
   bg,
   gap,
@@ -58,13 +61,17 @@ const Box: React.FC<{
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      {...(onClick && { onClick })}
     >
       {children}
     </div>
   );
 };
 
-const Card: React.FC<React.PropsWithChildren> = ({ children }) => {
+const Card: React.FC<React.PropsWithChildren<{ onClick?: () => void }>> = ({
+  children,
+  onClick,
+}) => {
   return (
     <Box
       p={1}
@@ -76,13 +83,39 @@ const Card: React.FC<React.PropsWithChildren> = ({ children }) => {
         cursor: "pointer",
         backgroundColor: "#3399ff",
       }}
+      {...(onClick && { onClick })}
     >
       {children}
     </Box>
   );
 };
 
+const useModalToggle = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const toggleOff = useCallback(() => setIsOpen(false), [setIsOpen]);
+  const toggleOn = useCallback(() => setIsOpen(true), [setIsOpen]);
+
+  return {
+    isOpen,
+    toggleOff,
+    toggleOn,
+  };
+};
+
+export const LifecycleVisualizationModal: React.FC<
+  React.PropsWithChildren<{ isOpen: boolean; onClose: () => void }>
+> = ({ isOpen, onClose }) => {
+  return (
+    <Modal isOpen={isOpen} onClose={onClose}>
+      Here is where I will show something cool.
+    </Modal>
+  );
+};
+
 export default function Home() {
+  const lvModalToggle = useModalToggle();
+  console.log({ lvModalToggle });
+
   return (
     <main className="flex min-h-screen flex-col items-center p-24 gap-8">
       <div className="max-w-xl flex flex-col gap-8">
@@ -124,12 +157,16 @@ export default function Home() {
           <Card>Domain-Driven Design</Card>
         </FlexCol>
         <FlexCol gap={1}>
-          <Card>Lifecycle Visualizations</Card>
+          <Card onClick={lvModalToggle.toggleOn}>Lifecycle Visualizations</Card>
           <a href="https://github.com/QuotableWater7/aoc2022">
             <Card>Functional Programming</Card>
           </a>
         </FlexCol>
       </FlexRow>
+      <LifecycleVisualizationModal
+        isOpen={lvModalToggle.isOpen}
+        onClose={lvModalToggle.toggleOff}
+      />
     </main>
   );
 }
