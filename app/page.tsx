@@ -1,23 +1,70 @@
 import React from "react";
 
-const Box: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
-  return <div className="p-4 border">{children}</div>;
+const FlexCol: React.FC<
+  React.PropsWithChildren<{ gap?: React.CSSProperties["gap"] }>
+> = ({ children, gap }) => {
+  return (
+    <Box display="flex" flexDirection="column" gap={gap}>
+      {children}
+    </Box>
+  );
+};
+
+const FlexRow: React.FC<
+  React.PropsWithChildren<{ gap?: React.CSSProperties["gap"] }>
+> = ({ children, gap }) => {
+  return (
+    <Box display="flex" flexDirection="row" gap={gap}>
+      {children}
+    </Box>
+  );
+};
+
+const Box: React.FC<{
+  br?: React.CSSProperties["borderRadius"];
+  children?: React.ReactNode;
+  display?: React.CSSProperties["display"];
+  flexDirection?: React.CSSProperties["flexDirection"];
+  p?: number;
+  bg?: React.CSSProperties["backgroundColor"];
+  gap?: React.CSSProperties["gap"];
+}> = ({ br, children, display, flexDirection, p, bg, gap }) => {
+  return (
+    <div
+      style={{
+        ...(p && { padding: `${p}rem` }),
+        ...(bg && { backgroundColor: bg }),
+        ...(gap && { gap: `${gap}rem` }),
+        ...(display && { display }),
+        ...(flexDirection && { flexDirection }),
+        ...(br && { borderRadius: `${br}px` }),
+      }}
+    >
+      {children}
+    </div>
+  );
+};
+
+const Card: React.FC<React.PropsWithChildren> = ({ children }) => {
+  return (
+    <Box p={1} bg="royalblue" br={4}>
+      {children}
+    </Box>
+  );
 };
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center p-24 gap-8">
-      <h1 className="text-4xl">👋 Welcome to JT Bowler&apos;s portfolio!</h1>
       <div className="max-w-xl flex flex-col gap-8">
+        <h1 className="text-4xl">👋 Welcome</h1>
         <div className="flex flex-col gap-2">
-          <strong>Bio:</strong>
           <div>
-            I&apos;ve worked at 4 startups over my career because I love
-            building new products from the ground up. I care deeply about
-            finding the simplest solutions to problems and getting value into
-            customer hands quickly. I also love finding ways to boost the
-            productivity of the engineering team and scale processes as
-            organizations grow.
+            I&apos;ve worked at startups over my career because I love building
+            new products from the ground up. I care deeply about finding the
+            simple but excellent solutions to problems. I also love finding ways
+            to boost the productivity of the engineering team and scale
+            processes as organizations grow.
           </div>
           <div>
             I am a lifelong learner and have skills in a wide variety of
@@ -34,22 +81,26 @@ export default function Home() {
             <ul>
               <li>
                 NodeJS, NextJS, React, TypeScript,
-                Postgres/Mongo/Redis/ElasticSearch, Docker, AWS/Heroku, ChatGPT,
-                Haskell, and whatever else gets the job done.
+                Postgres/Mongo/Redis/ElasticSearch, Datadog, Docker, AWS/Heroku,
+                ChatGPT, Haskell, and whatever else gets the job done.
               </li>
             </ul>
           </div>
         </div>
       </div>
       <div></div>
-      <div className="grid grid-cols-2 grid-rows-2 gap-16">
-        <Box>Datadog Dashboards</Box>
-        <Box>Domain-Driven Design</Box>
-        <Box>Invoice Matching</Box>
-        <a href="https://github.com/QuotableWater7/aoc2022">
-          <Box>Advent of Code &apos;22</Box>
-        </a>
-      </div>
+      <FlexRow gap={1}>
+        <FlexCol gap={1}>
+          <Card>Datadog Dashboards</Card>
+          <Card>Domain-Driven Design</Card>
+        </FlexCol>
+        <FlexCol gap={1}>
+          <Card>Invoice Matching</Card>
+          <a href="https://github.com/QuotableWater7/aoc2022">
+            <Card>Advent of Code &apos;22</Card>
+          </a>
+        </FlexCol>
+      </FlexRow>
     </main>
   );
 }
