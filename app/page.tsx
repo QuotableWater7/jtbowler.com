@@ -3,12 +3,25 @@ import React, { useCallback, useState } from "react";
 import { FlexRow, FlexCol, Card, Modal } from "./src";
 import { useModalToggle } from "./src/hooks";
 
+import lifecycle from "./static/lifecycle.gif";
+import Image from "next/image";
+
 export const LifecycleVisualizationModal: React.FC<
   React.PropsWithChildren<{ isOpen: boolean; onClose: () => void }>
 > = ({ isOpen, onClose }) => {
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      Here is where I will show something cool.
+      <FlexCol gap={1}>
+        <p>
+          <strong>Summary</strong>
+          <br />I built out this diagram that shows the lifecycle of a purchase
+          order. This unified several disjoint pages within our application and
+          saw high adoption within just hours of release.
+        </p>
+        <p>
+          <Image src={lifecycle} alt="Lifecycle" />
+        </p>
+      </FlexCol>
     </Modal>
   );
 };
@@ -56,7 +69,7 @@ export default function Home() {
           <Card>Domain-Driven Design</Card>
         </FlexCol>
         <FlexCol gap={1}>
-          <Card onClick={lvModalToggle.toggleOn}>Lifecycle Visualizations</Card>
+          <Card onClick={lvModalToggle.toggleOn}>Lifecycle Visualization</Card>
           <a href="https://github.com/QuotableWater7/aoc2022">
             <Card>Functional Programming</Card>
           </a>

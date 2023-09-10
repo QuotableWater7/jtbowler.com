@@ -116,7 +116,7 @@ export const Modal: React.FC<
     <div
       onClick={onClose}
       style={{
-        backgroundColor: "rgba(255, 255, 255, 0.2)",
+        backgroundColor: "rgba(0, 0, 0, 0.8)",
         position: "fixed",
         padding: "1rem",
         top: 0,
