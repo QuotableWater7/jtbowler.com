@@ -98,7 +98,7 @@ export default function Home() {
         </FlexCol>
         <FlexCol gap={1}>
           <Card onClick={lvModalToggle.toggleOn}>Lifecycle Visualization</Card>
-          <a href="https://github.com/QuotableWater7/aoc2022">
+          <a href="https://github.com/QuotableWater7/aoc2022/blob/main/11/main.hs">
             <Card>Functional Programming</Card>
           </a>
         </FlexCol>
