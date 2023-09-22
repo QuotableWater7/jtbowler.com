@@ -1,6 +1,6 @@
 export const Bio = () => {
   return (
-    <div>
+    <>
       <div>
         I&apos;ve worked at startups over my career because I love building new
         products from the ground up. I care deeply about providing excellent
@@ -24,6 +24,6 @@ export const Bio = () => {
         </a>{" "}
         if you are bored!
       </div>
-    </div>
+    </>
   );
 };
