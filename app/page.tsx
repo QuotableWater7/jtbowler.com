@@ -3,48 +3,9 @@ import React, { useCallback, useState } from "react";
 import { FlexRow, FlexCol, Card, Modal, Box } from "./src";
 import { useModalToggle } from "./src/hooks";
 
-import lifecycle from "./static/lifecycle.gif";
 import Image from "next/image";
-
-const LifecycleVisualizationModal: React.FC<
-  React.PropsWithChildren<{ isOpen: boolean; onClose: () => void }>
-> = ({ isOpen, onClose }) => {
-  return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <FlexCol gap={1}>
-        <p>
-          <strong>Lifecycle Visualization</strong>
-          <p>
-            I built out this diagram to unify a concept spanning several
-            disjoint pages within our application. This feature saw high
-            adoption within just hours of release.
-          </p>
-        </p>
-        <p>
-          <Image src={lifecycle} alt="Lifecycle" />
-        </p>
-      </FlexCol>
-    </Modal>
-  );
-};
-
-const DatadogDashboardsModal: React.FC<
-  React.PropsWithChildren<{ isOpen: boolean; onClose: () => void }>
-> = ({ isOpen, onClose }) => {
-  return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <FlexCol gap={1}>
-        <strong>Datadog Dashboards</strong>
-        <p>
-          I have instrumeted our server logs to provide granular details about
-          our requests coming in. This gives us the ability to detect
-          performance issues from a wide variety of symptoms: large payloads,
-          long response times, or frequency of calls by operation and user/org.
-        </p>
-      </FlexCol>
-    </Modal>
-  );
-};
+import { LifecycleVisualizationModal } from "./src/LifecycleVisualizationModal";
+import { DatadogDashboardsModal } from "./src/DatadogDashboardsModal";
 
 export default function Home() {
   const lvModalToggle = useModalToggle();
