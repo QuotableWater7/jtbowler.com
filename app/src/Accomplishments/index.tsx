@@ -1,18 +1,20 @@
 import { Card, FlexCol, FlexRow } from "..";
-import { DatadogDashboardsModal } from "../DatadogDashboardsModal";
-import { LifecycleVisualizationModal } from "../LifecycleVisualizationModal";
+import { DatadogDashboardsModal } from "./DatadogDashboardsModal";
+import { LifecycleVisualizationModal } from "./LifecycleVisualizationModal";
 import { useModalToggle } from "../hooks";
+import { CodingPatternsModal } from "./CodingPatternsModal";
 
 export const Accomplishments = () => {
   const lvModalToggle = useModalToggle();
   const datadogModalToggle = useModalToggle();
+  const codingPatternsToggle = useModalToggle();
 
   return (
     <>
       <FlexRow gap={1}>
         <FlexCol gap={1}>
           <Card onClick={datadogModalToggle.toggleOn}>Datadog Dashboards</Card>
-          <Card>Domain-Driven Design</Card>
+          <Card onClick={codingPatternsToggle.toggleOn}>Coding Patterns</Card>
         </FlexCol>
         <FlexCol gap={1}>
           <Card onClick={lvModalToggle.toggleOn}>Lifecycle Visualization</Card>
@@ -32,6 +34,10 @@ export const Accomplishments = () => {
       <DatadogDashboardsModal
         isOpen={datadogModalToggle.isOpen}
         onClose={datadogModalToggle.toggleOff}
+      />
+      <CodingPatternsModal
+        isOpen={codingPatternsToggle.isOpen}
+        onClose={codingPatternsToggle.toggleOff}
       />
     </>
   );

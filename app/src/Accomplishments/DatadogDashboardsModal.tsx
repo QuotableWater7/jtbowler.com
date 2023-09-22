@@ -1,4 +1,4 @@
-import { FlexCol, Modal } from ".";
+import { FlexCol, Modal } from "..";
 
 export const DatadogDashboardsModal: React.FC<
   React.PropsWithChildren<{ isOpen: boolean; onClose: () => void }>

@@ -1,5 +1,16 @@
 import React, { useState } from "react";
 
+export const Link: React.FC<React.PropsWithChildren<{ href: string }>> = ({
+  href,
+  children,
+}) => {
+  return (
+    <a href={href} className="page-link">
+      {children}
+    </a>
+  );
+};
+
 type FlexProps = Partial<
   Pick<React.CSSProperties, "alignItems" | "gap" | "justifyContent">
 >;

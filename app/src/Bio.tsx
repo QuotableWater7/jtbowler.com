@@ -1,3 +1,5 @@
+import { Link } from ".";
+
 export const Bio = () => {
   return (
     <>
@@ -16,12 +18,9 @@ export const Bio = () => {
       </div>
       <div>
         This site is built without using any UI/UX helpers. Check out{" "}
-        <a
-          href="https://github.com/QuotableWater7/jtbowler.com"
-          style={{ color: "#008f11" }}
-        >
+        <Link href="https://github.com/QuotableWater7/jtbowler.com">
           the source
-        </a>{" "}
+        </Link>{" "}
         if you are bored!
       </div>
     </>

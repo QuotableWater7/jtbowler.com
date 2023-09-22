@@ -1,7 +1,7 @@
-import { FlexCol, Modal } from ".";
+import { FlexCol, Modal } from "..";
 import Image from "next/image";
 
-import lifecycle from "../static/lifecycle.gif";
+import lifecycle from "../../static/lifecycle.gif";
 
 export const LifecycleVisualizationModal: React.FC<
   React.PropsWithChildren<{ isOpen: boolean; onClose: () => void }>
