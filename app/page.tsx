@@ -48,7 +48,7 @@ const DatadogDashboardsModal: React.FC<
 
 export default function Home() {
   const lvModalToggle = useModalToggle();
-  const ddModalToggle = useModalToggle();
+  const datadogModalToggle = useModalToggle();
 
   return (
     <main>
@@ -97,7 +97,9 @@ export default function Home() {
         </FlexCol>
         <FlexRow gap={1}>
           <FlexCol gap={1}>
-            <Card onClick={ddModalToggle.toggleOn}>Datadog Dashboards</Card>
+            <Card onClick={datadogModalToggle.toggleOn}>
+              Datadog Dashboards
+            </Card>
             <Card>Domain-Driven Design</Card>
           </FlexCol>
           <FlexCol gap={1}>
@@ -119,8 +121,8 @@ export default function Home() {
         onClose={lvModalToggle.toggleOff}
       />
       <DatadogDashboardsModal
-        isOpen={ddModalToggle.isOpen}
-        onClose={ddModalToggle.toggleOff}
+        isOpen={datadogModalToggle.isOpen}
+        onClose={datadogModalToggle.toggleOff}
       />
     </main>
   );
