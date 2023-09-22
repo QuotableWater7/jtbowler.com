@@ -12,13 +12,20 @@ export const LifecycleVisualizationModal: React.FC<
         <p>
           <strong>Lifecycle Visualization</strong>
           <p>
-            I built out this diagram to unify a concept spanning several
-            disjoint pages within our application. This feature saw high
-            adoption within just hours of release.
+            Kojo models a procurement process that we frequently describe as
+            having &quot;7 steps&quot;. I built out this diagram as a way to
+            quickly understand the steps taken before and after a Purchase Order
+            was sent and where the user was in the full lifecycle.
+          </p>
+          <p>
+            This component leverages higher-order functions to provide
+            consistent cell behavior across the different entities displayed.
           </p>
         </p>
         <p>
-          <Image src={lifecycle} alt="Lifecycle" />
+          <div style={{ width: "80%" }}>
+            <Image src={lifecycle} alt="Lifecycle" width="800" />
+          </div>
         </p>
       </FlexCol>
     </Modal>
