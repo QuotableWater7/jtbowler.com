@@ -9,24 +9,27 @@ export const CodingPatternsModal: React.FC<
         <strong>Coding Patterns</strong>
         <p>
           It is difficult to build a great product without a great developer
-          experience. Equipping the engineering team with great patterns enables
-          developers to deliver quality software faster and with less effort.
-          Some of the questions I like to ask myself upon joining a new
-          organization are:
+          experience. To me, the developer experience is far more than what
+          appears in an IDE -- it is the environment engineers operate within to
+          accomplish their goals. Equipping the engineering team with great
+          patterns (both coding and communication) enables developers to deliver
+          quality software faster and with less effort. Some of the questions I
+          like to ask myself upon joining a new organization are:
           <ul>
-            <li>
-              how do developers complete tasks, from the most basic CRUD
-              endpoint all the way up to syncing data between platforms?
-            </li>
-            <li> Where is the friction? </li>
+            <li>How do developers complete the most common tasks?</li>
             <li>Is writing code an enjoyable experience?</li>
-            <li>How quickly can engineers contribute after joining?</li>
+            <li>
+              How quickly can new engineers contribute meaningful features?
+            </li>
+            <li>How do engineers debug problems in production?</li>
+            <li>How does engineering communicate with stakeholders?</li>
+            <li>How do engineers align on complex decisions?</li>
           </ul>
           The answers to these questions often reveal opportunities to make the
-          entire org perform better.
+          entire engineering org perform even better.
         </p>
         <p>
-          Some of the patterns I am most fond of include:
+          On the coding front, some of the patterns I am most fond of include:
           <ul>
             <li>
               <strong>Layered Architecture: </strong>keep dependencies pointing
