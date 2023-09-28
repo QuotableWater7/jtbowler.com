@@ -20,7 +20,7 @@ export const DatadogDashboardsModal: React.FC<
             <li>frequency by operation, user/org, and customer integrations</li>
           </ul>
           Here is one sample log with some scrubbed values:
-          <Image src={ddLog} width="600" />
+          <Image src={ddLog} width="600" alt="Example Datadog Log" />
         </p>
       </FlexCol>
     </Modal>
