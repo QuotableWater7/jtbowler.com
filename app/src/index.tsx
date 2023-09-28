@@ -143,7 +143,9 @@ export const Card: React.FC<
       p={1}
       bg="royalblue"
       br={4}
-      border="2px solid #ccc"
+      border="1px solid #ccc"
+      display="flex"
+      justifyContent="center"
       hoverProps={{
         borderColor: "#ffbc40",
         cursor: "pointer",
@@ -179,7 +181,7 @@ export const Modal: React.FC<
       <Box
         bg="white"
         boxShadow="2px 2px 8px 2px black"
-        br={6}
+        br={4}
         color="black"
         width="800px"
         p={1}

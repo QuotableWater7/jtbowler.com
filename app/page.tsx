@@ -9,9 +9,9 @@ export default function Home() {
   return (
     <main>
       <FlexCol alignItems="center" justifyContent="space-around" gap={5} p={2}>
-        <FlexCol gap={1} width={650}>
+        <FlexCol gap={2} width={650}>
           <h1 className="text-4xl">👋 Welcome</h1>
-          <FlexCol gap={1}>
+          <FlexCol gap={0.5}>
             <Bio />
           </FlexCol>
           <FlexCol gap={0.5}>
